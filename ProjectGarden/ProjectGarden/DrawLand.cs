@@ -268,7 +268,7 @@ namespace ProjectGarden
             return rectangle;
         }
 
-        private Rectangle GetSquare()
+         private Rectangle GetSquare()
         {
             Rectangle square;
             int x, y, h, w;
@@ -276,49 +276,56 @@ namespace ProjectGarden
             h = height;
             w = width;
 
-            if(h<0 && w<0)
+            x = LandLayerModel.SelectedPoints[0].X;
+
+            y = LandLayerModel.SelectedPoints[0].Y;
+
+
+            if (h < 0 && w < 0)
             {
                 if (h < w)
                 {
                     x = LandLayerModel.SelectedPoints[0].X + h;
-                    y = LandLayerModel.SelectedPoints[0].Y + h;
+                    //                    y = LandLayerModel.SelectedPoints[0].Y + h;
                 }
                 else
                 {
-                    x = LandLayerModel.SelectedPoints[0].X + w;
+                    //                  x = LandLayerModel.SelectedPoints[0].X + w;
                     y = LandLayerModel.SelectedPoints[0].Y + w;
                 }
 
+                h = Math.Abs(h);
+                w = Math.Abs(w);
+
             }
-
-         else if (h < 0)
+            else if (h < 0)
             {
-                if(ma)
-                x = LandLayerModel.SelectedPoints[0].X + w;
-
                 h = Math.Abs(h);
 
-            }
-            else
-            {
-                x = LandLayerModel.SelectedPoints[0].X;
-
-            }
-            if (w < 0)
-            {
-                if (h < w)
-                    y = LandLayerModel.SelectedPoints[0].Y + h;
+                if (h > w)
+                {
+                    x = LandLayerModel.SelectedPoints[0].X - h;
+                }
                 else
-                    y = LandLayerModel.SelectedPoints[0].Y + w;
+                {
+                    x = LandLayerModel.SelectedPoints[0].X - w;
+                }
 
+            }
+             else   if (w < 0)
+            {
+                 w=Math.Abs(w);
+                if (h < w)
+                    y = LandLayerModel.SelectedPoints[0].Y - h;
+                else
+                    y = LandLayerModel.SelectedPoints[0].Y - w;
                 w = Math.Abs(w);
             }
-            else
-            {
-                y = LandLayerModel.SelectedPoints[0].Y;
+                     
 
-            }
 
+
+          
             //  rectangle = new Rectangle(x, y, h, h);
 
             if (h > w)
@@ -331,7 +338,8 @@ namespace ProjectGarden
             return square;
         }
 
-
+        
+        
         void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             ////if ( LandLayerModel.SelectedPoint.Count != 0)
