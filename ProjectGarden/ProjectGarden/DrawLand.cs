@@ -281,18 +281,19 @@ namespace ProjectGarden
                 if (h < w)
                 {
                     x = LandLayerModel.SelectedPoints[0].X + h;
-
+                    y = LandLayerModel.SelectedPoints[0].Y + h;
                 }
                 else
                 {
                     x = LandLayerModel.SelectedPoints[0].X + w;
-
+                    y = LandLayerModel.SelectedPoints[0].Y + w;
                 }
 
             }
 
          else if (h < 0)
             {
+                if(ma)
                 x = LandLayerModel.SelectedPoints[0].X + w;
 
                 h = Math.Abs(h);
